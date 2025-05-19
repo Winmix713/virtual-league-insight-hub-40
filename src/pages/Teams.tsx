@@ -1,10 +1,10 @@
-
 import React from "react";
 import { Users, Search, Filter, Plus, ChevronRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
+import { cn } from "@/lib/utils";
 
 interface TeamData {
   id: number;

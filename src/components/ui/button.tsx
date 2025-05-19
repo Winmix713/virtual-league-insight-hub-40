@@ -18,14 +18,7 @@ export const buttonVariants = {
   secondary: "bg-[#1e1e20] text-white hover:bg-[#2a2a2e] shadow-md active:shadow-inner",
   ghost: "bg-transparent text-white hover:bg-[#1e1e20] hover:text-white/90",
   link: "text-blue-500 underline-offset-4 hover:underline bg-transparent",
-  glass: [
-    "relative overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg text-white shadow-md",
-    "before:absolute before:inset-0 before:-z-10 before:transform before:rounded-md",
-    "before:bg-gradient-to-r before:from-blue-500/20 before:to-purple-500/20",
-    "before:opacity-0 before:transition before:duration-300 hover:before:opacity-100",
-    "after:absolute after:inset-0 after:rounded-md after:ring-1 after:ring-inset after:ring-white/10",
-    "hover:shadow-blue-500/10 active:shadow-inner"
-  ]
+  glass: "relative overflow-hidden border border-white/10 bg-white/5 backdrop-blur-lg text-white shadow-md before:absolute before:inset-0 before:-z-10 before:transform before:rounded-md before:bg-gradient-to-r before:from-blue-500/20 before:to-purple-500/20 before:opacity-0 before:transition before:duration-300 hover:before:opacity-100 after:absolute after:inset-0 after:rounded-md after:ring-1 after:ring-inset after:ring-white/10 hover:shadow-blue-500/10 active:shadow-inner"
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({ 
@@ -56,9 +49,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
       ref={ref}
       className={cn(
         baseStyles,
-        typeof buttonVariants[variant] === 'string' 
-          ? buttonVariants[variant] 
-          : cn(...(buttonVariants[variant] as string[])),
+        buttonVariants[variant],
         sizeStyles[size],
         fullWidth && "w-full",
         loading && "relative text-transparent hover:text-transparent cursor-wait",
