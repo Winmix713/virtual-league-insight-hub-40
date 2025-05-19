@@ -14,7 +14,7 @@
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em rgba(100, 108, 255, 0.67));
+  filter: drop-shadow(0 0 2em rgba(59, 130, 246, 0.67));
 }
 
 .logo.react:hover {

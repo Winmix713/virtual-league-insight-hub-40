@@ -1,12 +1,11 @@
 
-import { heroui } from "@heroui/react";
+import type { Config } from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -35,6 +34,27 @@ export default {
         'text-primary': '#ffffff',
         'text-secondary': 'rgba(255, 255, 255, 0.7)',
         'text-muted': 'rgba(255, 255, 255, 0.5)',
+
+        // Default shadcn/ui colors
+        background: '#09090b',
+        foreground: '#ffffff',
+        card: 'rgba(18, 18, 20, 0.7)',
+        'card-foreground': '#ffffff',
+        popover: 'rgba(18, 18, 20, 0.7)',
+        'popover-foreground': '#ffffff',
+        primary: '#3b82f6',
+        'primary-foreground': '#ffffff',
+        secondary: 'rgba(30, 30, 32, 0.7)',
+        'secondary-foreground': '#ffffff',
+        muted: 'rgba(40, 40, 42, 0.7)',
+        'muted-foreground': 'rgba(255, 255, 255, 0.5)',
+        accent: 'rgba(30, 30, 32, 0.7)',
+        'accent-foreground': '#ffffff',
+        destructive: '#ef4444',
+        'destructive-foreground': '#ffffff',
+        border: 'rgba(255, 255, 255, 0.08)',
+        input: 'rgba(255, 255, 255, 0.08)',
+        ring: '#3b82f6',
       },
       backgroundImage: {
         'glass-gradient': 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))',
@@ -50,6 +70,8 @@ export default {
         'fadeIn': 'fadeIn 0.5s ease-out forwards',
         'slideIn': 'slideIn 0.5s ease-out forwards',
         'scaleIn': 'scaleIn 0.3s ease-out forwards',
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
       keyframes: {
         float: {
@@ -73,6 +95,14 @@ export default {
           'from': { transform: 'scale(0.95)', opacity: 0 },
           'to': { transform: 'scale(1)', opacity: 1 },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       fontFamily: {
         'primary': ['Inter', 'sans-serif'],
@@ -90,6 +120,9 @@ export default {
       },
       borderRadius: {
         'px': '1px',
+        lg: "0.75rem",
+        md: "0.5rem",
+        sm: "0.25rem",
       },
       spacing: {
         '7.5': '30px',
@@ -97,88 +130,5 @@ export default {
     },
   },
   darkMode: "class",
-  plugins: [
-    heroui({
-      layout: {
-        dividerWeight: "1px", 
-        disabledOpacity: 0.45, 
-        fontSize: {
-          tiny: "0.75rem",
-          small: "0.875rem",
-          medium: "0.9375rem",
-          large: "1.125rem",
-        },
-        lineHeight: {
-          tiny: "1rem", 
-          small: "1.25rem", 
-          medium: "1.5rem", 
-          large: "1.75rem", 
-        },
-        radius: {
-          small: "6px", 
-          medium: "8px", 
-          large: "12px", 
-        },
-        borderWidth: {
-          small: "1px", 
-          medium: "1px", 
-          large: "2px", 
-        },
-      },
-      themes: {
-        light: {
-          colors: {
-            background: {
-              DEFAULT: "#09090b"
-            },
-            content1: {
-              DEFAULT: "rgba(18, 18, 20, 0.7)",
-              foreground: "#ffffff"
-            },
-            content2: {
-              DEFAULT: "rgba(30, 30, 32, 0.7)",
-              foreground: "#ffffff"
-            },
-            content3: {
-              DEFAULT: "rgba(40, 40, 42, 0.7)",
-              foreground: "#ffffff"
-            },
-            content4: {
-              DEFAULT: "rgba(50, 50, 52, 0.7)",
-              foreground: "#ffffff"
-            },
-            divider: {
-              DEFAULT: "rgba(255, 255, 255, 0.08)"
-            },
-            focus: {
-              DEFAULT: "#3b82f6"
-            },
-            foreground: {
-              DEFAULT: "#ffffff"
-            },
-            primary: {
-              50: "#eff6ff",
-              100: "#dbeafe",
-              200: "#bfdbfe",
-              300: "#93c5fd",
-              400: "#60a5fa",
-              500: "#3b82f6",
-              600: "#2563eb",
-              700: "#1d4ed8",
-              800: "#1e40af",
-              900: "#1e3a8a",
-              DEFAULT: "#3b82f6",
-              foreground: "#ffffff"
-            },
-            default: {
-              DEFAULT: "rgba(30, 30, 32, 0.7)",
-              foreground: "#ffffff"
-            }
-          }
-        },
-        // Remove duplicate dark theme since it's identical to light theme
-        // Both themes use the same dark UI appearance
-      }
-    })
-  ]
-}
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
