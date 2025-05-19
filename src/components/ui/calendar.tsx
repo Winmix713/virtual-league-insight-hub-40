@@ -1,10 +1,11 @@
+
 import * as React from "react"
-import { CalendarIcon } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
+import { format } from "date-fns"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 export type CalendarProps = React.ComponentProps<typeof DayPicker>
 
@@ -19,15 +20,13 @@ function Calendar({
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        ...classNames,
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
         caption: "flex justify-center pt-1 relative items-center",
         caption_label: "text-sm font-medium",
         nav: "space-x-1 flex items-center",
         nav_button: cn(
-          "border border-[#333336] bg-transparent hover:bg-[#1e1e20] text-white hover:border-[#444448] inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] h-7 w-7 bg-transparent p-0 opacity-50 data-[disabled]:opacity-50",
-          "h-7 w-7 bg-transparent p-0 opacity-50 data-[disabled]:opacity-50"
+          "border border-[#333336] bg-transparent hover:bg-[#1e1e20] text-white hover:border-[#444448] inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[#09090b] disabled:pointer-events-none disabled:opacity-50 active:scale-[0.98] h-7 w-7 bg-transparent p-0 opacity-50 data-[disabled]:opacity-50"
         ),
         nav_button_previous: "absolute left-1",
         nav_button_next: "absolute right-1",
@@ -39,7 +38,6 @@ function Calendar({
         cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
         day: cn(
           "border border-[#333336] bg-transparent hover:bg-[#1e1e20] text-white hover:border-[#444448] h-7 w-7 p-0 font-normal aria-selected:opacity-100",
-          "h-7 w-7 p-0 font-normal aria-selected:opacity-100",
           "rounded-md hover:bg-accent hover:text-accent-foreground focus:relative focus:z-20"
         ),
         day_selected:
@@ -58,41 +56,39 @@ function Calendar({
 }
 Calendar.displayName = "Calendar"
 
-interface DatePickerProps extends Omit<CalendarProps, "mode"> {}
+interface DatePickerProps {
+  selected?: Date
+  onSelect?: (date: Date | undefined) => void
+  format?: (date: Date) => string
+}
 
-const DatePicker = ({ ...props }: DatePickerProps) => {
-  const [date, setDate] = React.useState<CalendarProps["selected"]>(props.selected)
+const DatePicker = ({ selected, onSelect, format: formatFn }: DatePickerProps) => {
+  const [date, setDate] = React.useState<Date | undefined>(selected)
 
   return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <Button
-          variant={"outline"}
-          className={cn(
-            "w-[300px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
-          )}
-        >
-          <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? (
-            props.format?.format(date as Date)
-          ) : (
-            <span>Pick a date</span>
-          )}
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={(date) => {
-            setDate(date)
-            props.onSelect?.(date)
-          }}
-          {...props}
-        />
-      </PopoverContent>
-    </Popover>
+    <div>
+      <Button
+        variant="outline"
+        className={cn(
+          "w-[300px] justify-start text-left font-normal",
+          !date && "text-muted-foreground"
+        )}
+      >
+        {date ? (
+          formatFn ? formatFn(date) : format(date, "PPP")
+        ) : (
+          <span>Pick a date</span>
+        )}
+      </Button>
+      <Calendar
+        mode="single"
+        selected={date}
+        onSelect={(newDate) => {
+          setDate(newDate)
+          if (onSelect) onSelect(newDate)
+        }}
+      />
+    </div>
   )
 }
 DatePicker.displayName = "DatePicker"

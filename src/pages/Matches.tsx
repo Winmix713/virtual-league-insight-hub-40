@@ -1,5 +1,6 @@
+
 import React from "react";
-import { CalendarClock, Users, SoccerBall, AlertTriangle, ChevronRight } from "lucide-react";
+import { CalendarClock, Users, Calendar, AlertTriangle, ChevronRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -112,7 +113,7 @@ const Matches = () => {
         <StatCard
           title="Matches Played"
           value={statsData.matchesPlayed}
-          icon={<SoccerBall size={24} />}
+          icon={<Calendar size={24} />}
           color="green"
           change={{ 
             value: "+8%", 
@@ -124,9 +125,13 @@ const Matches = () => {
         <StatCard
           title="Goals Scored"
           value={statsData.goalsScored.value}
-          icon={<SoccerBall size={24} />}
+          icon={<Calendar size={24} />}
           color="purple"
-          change={statsData.goalsScored.change}
+          change={{ 
+            value: statsData.goalsScored.change,
+            isPositive: true,
+            text: "from last season"
+          }}
         />
 
         <StatCard
@@ -134,7 +139,11 @@ const Matches = () => {
           value={statsData.bookings.value}
           icon={<AlertTriangle size={24} />}
           color="amber"
-          change={statsData.bookings.change}
+          change={{ 
+            value: statsData.bookings.change,
+            isPositive: false,
+            text: "from last season"
+          }}
         />
 
         <StatCard
@@ -142,7 +151,11 @@ const Matches = () => {
           value={statsData.attendance.value}
           icon={<Users size={24} />}
           color="amber"
-          change={statsData.attendance.change}
+          change={{ 
+            value: statsData.attendance.change,
+            isPositive: true,
+            text: "from last season"
+          }}
         />
       </div>
 
