@@ -1,3 +1,4 @@
+
 import { heroui } from "@heroui/react";
 
 /** @type {import('tailwindcss').Config} */
@@ -15,12 +16,39 @@ export default {
         'winmix-card': 'rgba(18, 18, 20, 0.7)',
         'winmix-hover': 'rgba(30, 30, 32, 0.7)',
         'winmix-blue': '#3b82f6',
+        'winmix-purple': '#8b5cf6',
+        'winmix-green': '#10b981',
+        'winmix-amber': '#f59e0b',
+        'winmix-red': '#ef4444',
       },
       backgroundImage: {
         'glass-gradient': 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02))',
+        'noise': "var(--noise-filter)",
       },
       animation: {
         'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'float': 'float 15s ease-in-out infinite',
+        'float-reverse': 'float 18s ease-in-out infinite reverse',
+        'countUp': 'countUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+      },
+      keyframes: {
+        float: {
+          '0%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(30px, -20px) scale(1.1)' },
+          '100%': { transform: 'translate(0, 0) scale(1)' },
+        },
+        countUp: {
+          'from': { opacity: 0, transform: 'translateY(10px)' },
+          'to': { opacity: 1, transform: 'translateY(0)' },
+        },
+      },
+      fontFamily: {
+        'primary': ['Inter', 'sans-serif'],
+        'display': ['Space Grotesk', 'sans-serif'],
+      },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(10px)',
       },
     },
   },
