@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
@@ -109,6 +108,7 @@ export default {
         'noise': "var(--noise-filter)",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-overlay': 'linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(9, 9, 11, 0.8))',
+        'gradient-45': 'linear-gradient(45deg, var(--tw-gradient-stops))',
       },
       animation: {
         'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -120,6 +120,7 @@ export default {
         'count-up': 'countUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-ring': 'pulseRing 2s cubic-bezier(0.16, 1, 0.3, 1) infinite',
         'rotate': 'rotate 6s linear infinite',
+        'rotate-6s': 'rotate 6s linear infinite',
         'countUp': 'countUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'scaleIn': 'scaleIn 0.3s ease-out forwards',
         'slideIn': 'slideIn 0.5s ease-out forwards',
@@ -189,6 +190,7 @@ export default {
       },
       borderRadius: {
         'px': '1px',
+        'inherit': 'inherit',
         lg: "0.75rem",
         md: "0.5rem",
         sm: "0.25rem",
