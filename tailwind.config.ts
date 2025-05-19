@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
@@ -209,6 +210,12 @@ export default {
         'small': '1.25rem',
         'medium': '1.5rem',
         'large': '1.75rem',
+      },
+      transitionDuration: {
+        '400': '400ms',
+        '2000': '2000ms',
+        '3000': '3000ms',
+        '8000': '8000ms',
       },
     },
   },

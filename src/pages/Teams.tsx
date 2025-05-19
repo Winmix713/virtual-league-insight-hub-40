@@ -1,9 +1,11 @@
+
 import React from "react";
 import { Users, Search, Filter, Plus, ChevronRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
+import { TeamCard } from "@/components/team/TeamCard";
 import { cn } from "@/lib/utils";
 
 interface TeamData {
@@ -19,6 +21,7 @@ interface TeamData {
   players: number;
   division: string;
   form: Array<"W" | "D" | "L">;
+  position?: number;
 }
 
 const Teams = () => {
@@ -36,7 +39,8 @@ const Teams = () => {
       goalsAgainst: 18,
       players: 25,
       division: "Premier",
-      form: ["W", "W", "D", "L", "W"]
+      form: ["W", "W", "D", "L", "W"],
+      position: 2
     },
     {
       id: 2,
@@ -50,7 +54,8 @@ const Teams = () => {
       goalsAgainst: 20,
       players: 26,
       division: "Premier",
-      form: ["W", "W", "W", "D", "W"]
+      form: ["W", "W", "W", "D", "W"],
+      position: 1
     },
     {
       id: 3,
@@ -64,7 +69,8 @@ const Teams = () => {
       goalsAgainst: 24,
       players: 28,
       division: "Premier",
-      form: ["W", "L", "W", "D", "W"]
+      form: ["W", "L", "W", "D", "W"],
+      position: 4
     },
     {
       id: 4,
@@ -78,7 +84,8 @@ const Teams = () => {
       goalsAgainst: 25,
       players: 24,
       division: "Premier",
-      form: ["W", "W", "D", "W", "L"]
+      form: ["W", "W", "D", "W", "L"],
+      position: 3
     },
     {
       id: 5,
@@ -92,7 +99,8 @@ const Teams = () => {
       goalsAgainst: 28,
       players: 25,
       division: "Premier",
-      form: ["D", "W", "L", "W", "D"]
+      form: ["D", "W", "L", "W", "D"],
+      position: 6
     },
     {
       id: 6,
@@ -106,7 +114,8 @@ const Teams = () => {
       goalsAgainst: 27,
       players: 27,
       division: "Premier",
-      form: ["L", "W", "W", "D", "W"]
+      form: ["L", "W", "W", "D", "W"],
+      position: 5
     }
   ];
 
@@ -203,67 +212,27 @@ const Teams = () => {
             </Button>
           </div>
 
-          {/* Team Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          {/* Team Cards Grid - New Design */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {teams.map((team) => (
-              <div 
+              <TeamCard
                 key={team.id}
-                className="border border-[#222224] rounded-lg hover:border-white/20 hover:bg-white/5 transition-all duration-300 p-4 group"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="h-12 w-12 rounded-full bg-[#1e1e20] flex items-center justify-center font-bold text-white">
-                    {team.logo}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold">{team.name}</h3>
-                    <span className="text-xs text-gray-400">{team.division} Division</span>
-                  </div>
-                </div>
-
-                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <span className="block text-sm text-gray-400">Wins</span>
-                    <span className="block font-medium">{team.wins}</span>
-                  </div>
-                  <div>
-                    <span className="block text-sm text-gray-400">Draws</span>
-                    <span className="block font-medium">{team.draws}</span>
-                  </div>
-                  <div>
-                    <span className="block text-sm text-gray-400">Losses</span>
-                    <span className="block font-medium">{team.losses}</span>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex items-center justify-between">
-                  <div className="flex gap-1">
-                    {team.form.map((result, index) => (
-                      <span 
-                        key={index}
-                        className={cn(
-                          "w-6 h-6 flex items-center justify-center rounded text-xs font-medium",
-                          result === "W" ? "bg-green-700/30 text-green-500" :
-                          result === "D" ? "bg-amber-700/30 text-amber-500" :
-                          "bg-red-700/30 text-red-500"
-                        )}
-                      >
-                        {result}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-sm">
-                    <span className="font-medium text-white">{team.points}</span>
-                    <span className="text-gray-400"> pts</span>
-                  </span>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#222224] flex justify-between items-center">
-                  <span className="text-xs text-gray-400">{team.players} Players</span>
-                  <Button variant="ghost" size="sm" className="text-blue-500" rightIcon={<ChevronRight size={14} />}>
-                    Details
-                  </Button>
-                </div>
-              </div>
+                name={team.name}
+                logo={team.logo}
+                division={team.division}
+                stats={{
+                  wins: team.wins,
+                  draws: team.draws,
+                  losses: team.losses,
+                  points: team.points,
+                  goalsFor: team.goalsFor,
+                  goalsAgainst: team.goalsAgainst,
+                  position: team.position,
+                  players: team.players
+                }}
+                form={team.form.map(result => ({ result }))}
+                onClick={() => console.log(`Team ${team.name} clicked`)}
+              />
             ))}
           </div>
 
