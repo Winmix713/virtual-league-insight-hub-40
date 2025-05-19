@@ -26,40 +26,38 @@ export const StatCard: React.FC<StatCardProps> = ({
   trend = []
 }) => {
   const getColorConfig = (color: string) => {
-    const baseConfig = {
-      iconWrapper: "transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg",
-      glow: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg",
-      border: "group-hover:border-opacity-20"
-    };
-
     const configs = {
       blue: {
         bg: "bg-blue-950/50",
         text: "text-blue-500",
-        glow: `${baseConfig.glow} bg-blue-500/5`,
+        glow: "bg-blue-500/5",
         iconShadow: "group-hover:shadow-blue-500/20",
-        border: `${baseConfig.border} group-hover:border-blue-500`
+        border: "group-hover:border-blue-500",
+        iconWrapper: "transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
       },
       green: {
         bg: "bg-green-950/50",
         text: "text-green-500",
-        glow: `${baseConfig.glow} bg-green-500/5`,
+        glow: "bg-green-500/5",
         iconShadow: "group-hover:shadow-green-500/20",
-        border: `${baseConfig.border} group-hover:border-green-500`
+        border: "group-hover:border-green-500",
+        iconWrapper: "transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
       },
       purple: {
         bg: "bg-purple-950/50",
         text: "text-purple-500",
-        glow: `${baseConfig.glow} bg-purple-500/5`,
+        glow: "bg-purple-500/5",
         iconShadow: "group-hover:shadow-purple-500/20",
-        border: `${baseConfig.border} group-hover:border-purple-500`
+        border: "group-hover:border-purple-500",
+        iconWrapper: "transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
       },
       amber: {
         bg: "bg-amber-950/50",
         text: "text-amber-500",
-        glow: `${baseConfig.glow} bg-amber-500/5`,
+        glow: "bg-amber-500/5",
         iconShadow: "group-hover:shadow-amber-500/20",
-        border: `${baseConfig.border} group-hover:border-amber-500`
+        border: "group-hover:border-amber-500",
+        iconWrapper: "transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg"
       }
     };
 
@@ -73,7 +71,7 @@ export const StatCard: React.FC<StatCardProps> = ({
       "group rounded-lg border text-card-foreground relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:translate-y-[-2px] bg-[#121214] bg-opacity-90 backdrop-filter backdrop-blur-sm border-[#222224]",
       className
     )}>
-      <div className={colorClass.glow} />
+      <div className={cn("absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-lg", colorClass.glow)} />
       <div className="p-6 relative z-10">
         <div className="flex items-center justify-between">
           <div className="flex flex-col">

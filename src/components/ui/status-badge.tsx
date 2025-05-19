@@ -32,7 +32,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         animation: animated ? "after:bg-green-500" : "",
         border: "border border-green-500/30",
         glow: `${baseConfig.glow} bg-green-500/10`,
-        indicator: `${baseConfig.indicator} bg-green-500`
+        indicator: `${baseConfig.indicator} bg-green-500`,
+        wrapper: baseConfig.wrapper
       },
       live: {
         bg: "bg-red-500/20",
@@ -41,7 +42,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         animation: animated ? "after:bg-red-500 after:animate-pulse" : "",
         border: "border border-red-500/30",
         glow: `${baseConfig.glow} bg-red-500/10`,
-        indicator: `${baseConfig.indicator} bg-red-500`
+        indicator: `${baseConfig.indicator} bg-red-500`,
+        wrapper: baseConfig.wrapper
       },
       upcoming: {
         bg: "bg-blue-500/20",
@@ -50,7 +52,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         animation: animated ? "after:bg-blue-500" : "",
         border: "border border-blue-500/30",
         glow: `${baseConfig.glow} bg-blue-500/10`,
-        indicator: `${baseConfig.indicator} bg-blue-500`
+        indicator: `${baseConfig.indicator} bg-blue-500`,
+        wrapper: baseConfig.wrapper
       }
     };
 
