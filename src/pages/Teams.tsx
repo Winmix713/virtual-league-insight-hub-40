@@ -31,7 +31,7 @@ const Teams = () => {
     {
       id: 1,
       name: "London Ágyúk",
-      logo: "LA",
+      logo: getTeamLogoUrl("London Ágyúk") || "LA",
       wins: 12,
       draws: 5,
       losses: 3,
@@ -46,7 +46,7 @@ const Teams = () => {
     {
       id: 2,
       name: "Manchester Kék",
-      logo: "MK",
+      logo: getTeamLogoUrl("Manchester Kék") || "MK",
       wins: 14,
       draws: 2,
       losses: 4,
@@ -61,7 +61,7 @@ const Teams = () => {
     {
       id: 3,
       name: "Vörös Ördögök",
-      logo: "VÖ",
+      logo: getTeamLogoUrl("Vörös Ördögök") || "VÖ",
       wins: 11,
       draws: 4,
       losses: 5,
@@ -76,7 +76,7 @@ const Teams = () => {
     {
       id: 4,
       name: "Liverpool",
-      logo: "LI",
+      logo: getTeamLogoUrl("Liverpool") || "LI",
       wins: 13,
       draws: 3,
       losses: 4,
@@ -91,7 +91,7 @@ const Teams = () => {
     {
       id: 5,
       name: "Aston Oroszlán",
-      logo: "AO",
+      logo: getTeamLogoUrl("Aston Oroszlán") || "AO",
       wins: 9,
       draws: 6,
       losses: 5,
@@ -106,7 +106,7 @@ const Teams = () => {
     {
       id: 6,
       name: "Chelsea",
-      logo: "CH",
+      logo: getTeamLogoUrl("Chelsea") || "CH",
       wins: 10,
       draws: 4,
       losses: 6,
@@ -121,7 +121,7 @@ const Teams = () => {
     {
       id: 7,
       name: "Newcastle",
-      logo: "NU",
+      logo: getTeamLogoUrl("Newcastle") || "NU",
       wins: 8,
       draws: 7,
       losses: 5,
@@ -136,7 +136,7 @@ const Teams = () => {
     {
       id: 8,
       name: "Tottenham",
-      logo: "TO",
+      logo: getTeamLogoUrl("Tottenham") || "TO",
       wins: 9,
       draws: 4,
       losses: 7,

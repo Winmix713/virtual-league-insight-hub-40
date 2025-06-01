@@ -1,11 +1,11 @@
-
 import React from "react";
-import { Shield, CalendarClock, Users, Settings as SettingsIcon, Plus, ChevronRight } from "lucide-react";
+import { Shield, Users, Calendar, Trophy, Plus, Search, Filter, MoreHorizontal, ChevronRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
 import { cn } from "@/lib/utils";
+import { getTeamLogoUrl } from "@/data/teams";
 
 interface LeagueData {
   id: number;
@@ -130,7 +130,7 @@ const LeagueManagement = () => {
           }}
         />
       </div>
-      
+
       {/* League Management */}
       <Card glassmorphism glowColor="blue" className="mt-6">
         <div className="p-6">
@@ -143,7 +143,7 @@ const LeagueManagement = () => {
               Create New League
             </Button>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {leagues.map((league) => (
               <div 
@@ -169,7 +169,7 @@ const LeagueManagement = () => {
                     {league.type}
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   <div>
                     <span className="text-xs text-gray-400 block">Teams</span>
@@ -188,7 +188,7 @@ const LeagueManagement = () => {
                     <span className="text-sm font-medium">{league.endDate}</span>
                   </div>
                 </div>
-                
+
                 <div className="mt-4 pt-3 border-t border-[#222224] flex justify-between items-center">
                   <div className="flex gap-2">
                     <Button variant="outline" size="sm" className="text-sm">Standings</Button>
@@ -203,7 +203,7 @@ const LeagueManagement = () => {
           </div>
         </div>
       </Card>
-      
+
       {/* Current Season */}
       <Card glassmorphism glowColor="green" className="mt-6">
         <div className="p-6">
@@ -211,14 +211,14 @@ const LeagueManagement = () => {
             <CalendarClock className="h-5 w-5 text-green-500" />
             <h2 className="text-xl font-semibold">Current Season - 2024/2025</h2>
           </div>
-          
+
           <div className="border border-[#222224] rounded-lg p-4">
             <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
               <div>
                 <h3 className="font-semibold">Virtual Premier League</h3>
                 <p className="text-sm text-gray-400 mt-1">Main Competition</p>
               </div>
-              
+
               <div className="flex gap-2 flex-wrap">
                 <Button variant="outline" size="sm" leftIcon={<Users size={14} />}>
                   Teams
@@ -234,7 +234,7 @@ const LeagueManagement = () => {
                 </Button>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
               <div className="border border-[#222224] rounded p-3">
                 <h4 className="text-sm font-medium mb-2">Progress</h4>
@@ -246,7 +246,7 @@ const LeagueManagement = () => {
                   <span>38% Complete</span>
                 </div>
               </div>
-              
+
               <div className="border border-[#222224] rounded p-3">
                 <h4 className="text-sm font-medium mb-2">Stats</h4>
                 <div className="grid grid-cols-2 gap-2">
@@ -268,7 +268,7 @@ const LeagueManagement = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="border border-[#222224] rounded p-3">
                 <h4 className="text-sm font-medium mb-2">Top Teams</h4>
                 <div className="space-y-2">
@@ -296,7 +296,7 @@ const LeagueManagement = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-6 flex justify-center">
               <Button variant="glass" rightIcon={<ChevronRight size={14} />}>
                 View League Dashboard
@@ -305,7 +305,7 @@ const LeagueManagement = () => {
           </div>
         </div>
       </Card>
-      
+
       {/* Season Planning */}
       <Card glassmorphism glowColor="purple" className="mt-6">
         <div className="p-6">
@@ -313,11 +313,11 @@ const LeagueManagement = () => {
             <CalendarClock className="h-5 w-5 text-purple-500" />
             <h2 className="text-xl font-semibold">Season Planning</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 border border-[#222224] rounded-lg p-4">
               <h3 className="font-medium mb-4">Calendar Overview</h3>
-              
+
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="w-24 flex-shrink-0 py-2 px-3 bg-blue-900/20 text-blue-400 rounded text-xs font-medium text-center">
@@ -330,7 +330,7 @@ const LeagueManagement = () => {
                     <p className="text-xs text-gray-400">Winter Tournament - Full Competition</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-24 flex-shrink-0 py-2 px-3 bg-green-900/20 text-green-400 rounded text-xs font-medium text-center">
                     Jan - May<br/>2025
@@ -341,7 +341,7 @@ const LeagueManagement = () => {
                     <p className="text-xs text-gray-400">Virtual FA Cup - Final Rounds</p>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start gap-3">
                   <div className="w-24 flex-shrink-0 py-2 px-3 bg-purple-900/20 text-purple-400 rounded text-xs font-medium text-center">
                     June - July<br/>2025
@@ -354,15 +354,15 @@ const LeagueManagement = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="border border-[#222224] rounded-lg p-4">
               <h3 className="font-medium mb-4">Next Season Planning</h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <h4 className="text-sm font-medium">2025/2026 Season</h4>
                   <p className="text-xs text-gray-400 mt-1">Planning in progress</p>
-                  
+
                   <div className="mt-4 space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="text-xs text-gray-400">Team registration</span>
@@ -378,10 +378,10 @@ const LeagueManagement = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="pt-4 border-t border-[#222224]">
                   <h4 className="text-sm font-medium">New Competitions</h4>
-                  
+
                   <div className="mt-2 space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 rounded-full bg-blue-500"></div>
@@ -393,7 +393,7 @@ const LeagueManagement = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <Button variant="glass" size="sm" className="w-full" leftIcon={<CalendarClock size={14} />}>
                   Plan Next Season
                 </Button>

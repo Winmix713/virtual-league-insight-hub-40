@@ -234,7 +234,6 @@ export default {
       },
       transitionTimingFunction: {
         'bounce-soft': 'cubic-bezier(0.16, 1, 0.3, 1)',
-        'ease-smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
       boxShadow: {
         'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',

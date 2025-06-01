@@ -1,11 +1,11 @@
-
 import React from "react";
-import { CalendarClock, Users, Calendar, AlertTriangle, ChevronRight } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy, Filter, Search, Plus, ChevronRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
 import { cn } from "@/lib/utils";
+import { getTeamLogoUrl } from "@/data/teams";
 
 interface MatchData {
   id: number;

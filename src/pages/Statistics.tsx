@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
 import { cn } from "@/lib/utils";
+import { getTeamLogoUrl } from "@/data/teams";
 
 interface TeamStatsData {
   position: number;
@@ -300,7 +301,29 @@ const Statistics = () => {
                           {team.position}
                         </span>
                       </td>
-                      <td className="py-4 font-medium">{team.name}</td>
+                      <td className="py-4">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20">
+                            {getTeamLogoUrl(team.name) ? (
+                              <img 
+                                src={getTeamLogoUrl(team.name)} 
+                                alt={`${team.name} logo`}
+                                className="w-full h-full object-contain"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = 'none';
+                                  target.parentElement!.innerHTML = `<span class="w-full h-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center text-xs font-bold text-white">${team.name.slice(0, 2)}</span>`;
+                                }}
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center text-xs font-bold text-white">
+                                {team.name.slice(0, 2)}
+                              </div>
+                            )}
+                          </div>
+                          <span className="font-medium">{team.name}</span>
+                        </div>
+                      </td>
                       <td className="py-4 text-center">{team.played}</td>
                       <td className="py-4 text-center">{team.won}</td>
                       <td className="py-4 text-center">{team.drawn}</td>
@@ -382,7 +405,29 @@ const Statistics = () => {
                         </span>
                       </td>
                       <td className="py-4 font-medium">{player.name}</td>
-                      <td className="py-4">{player.team}</td>
+                      <td className="py-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 rounded-full overflow-hidden border border-white/20">
+                            {getTeamLogoUrl(player.team) ? (
+                              <img 
+                                src={getTeamLogoUrl(player.team)} 
+                                alt={`${player.team} logo`}
+                                className="w-full h-full object-contain"
+                                onError={(e) => {
+                                  const target = e.target as HTMLImageElement;
+                                  target.style.display = 'none';
+                                  target.parentElement!.innerHTML = `<span class="w-full h-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center text-xs font-bold text-white">${player.team.slice(0, 1)}</span>`;
+                                }}
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center text-xs font-bold text-white">
+                                {player.team.slice(0, 1)}
+                              </div>
+                            )}
+                          </div>
+                          <span>{player.team}</span>
+                        </div>
+                      </td>
                       <td className="py-4 text-center font-semibold">{player.goals}</td>
                       <td className="py-4 text-center">{player.assists}</td>
                       <td className="py-4 text-center">{player.appearances}</td>
