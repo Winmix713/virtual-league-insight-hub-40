@@ -1,0 +1,17 @@
+/* Mobile - 375 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+padding: 0px;
+gap: 64px;
+
+position: relative;
+width: 375px;
+height: 10506px;
+
+background: #202020;
+border-radius: 20px;
