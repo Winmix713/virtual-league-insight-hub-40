@@ -9,6 +9,9 @@ export default defineConfig(({ mode }) => ({
     host: "0.0.0.0",
     port: 5000,
     open: true,
+    allowedHosts: [
+      "553d6e47-d16c-4d30-a626-23ea951a2681-00-yibdwvrbdyy5.riker.replit.dev",
+    ],
   },
   plugins: [
     react(),
