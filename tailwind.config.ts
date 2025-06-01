@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 /** @type {import('tailwindcss').Config} */
@@ -74,13 +73,13 @@ export default {
           DEFAULT: "rgba(30, 30, 32, 0.7)",
           foreground: "#ffffff"
         },
-        
+
         // Status colors
         'status-success': '#10b981',
         'status-warning': '#f59e0b',
         'status-error': '#ef4444',
         'status-info': '#3b82f6',
-        
+
         // Text colors
         'text-primary': '#ffffff',
         'text-secondary': 'rgba(255, 255, 255, 0.7)',
@@ -127,50 +126,106 @@ export default {
         'slideIn': 'slideIn 0.5s ease-out forwards',
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s infinite",
+        "blur-in": "blur-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        skeleton: "skeleton 1.5s ease-in-out infinite",
+        "slide-in-left": "slideInLeft 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "slide-in-right": "slideInRight 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "fade-in-up": "fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+        "progress-bar": "progressBar 2s ease-out forwards",
+        bounce: "bounce 1s ease-in-out",
+        wiggle: "wiggle 1s ease-in-out infinite",
+        heartbeat: "heartbeat 1.5s ease-in-out infinite",
       },
       keyframes: {
+        // Loading animations
+        shimmer: {
+          "0%": { backgroundPosition: "-1000px 0" },
+          "100%": { backgroundPosition: "1000px 0" },
+        },
+        "blur-in": {
+          "0%": { filter: "blur(10px)", opacity: "0" },
+          "100%": { filter: "blur(0px)", opacity: "1" },
+        },
+        "pulse-slow": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.5" },
+        },
+        skeleton: {
+          "0%": { opacity: "1" },
+          "50%": { opacity: "0.4" },
+          "100%": { opacity: "1" },
+        },
+
+        // Movement animations
         float: {
-          '0%': { transform: 'translate(0, 0) scale(1)' },
-          '50%': { transform: 'translate(30px, -20px) scale(1.1)' },
-          '100%': { transform: 'translate(0, 0) scale(1)' },
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-20px)" },
         },
         cardEntrance: {
-          'to': { opacity: '1', transform: 'translateY(0)' },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        slideInLeft: {
+          "0%": { opacity: "0", transform: "translateX(-30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        slideInRight: {
+          "0%": { opacity: "0", transform: "translateX(30px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+
+        // Progress animations
         dash: {
-          'to': { strokeDashoffset: '0' },
+          to: { strokeDasharray: "1000", strokeDashoffset: "0" },
         },
-        fadeIn: {
-          'from': { opacity: '0', transform: 'translateY(-10px)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
+        "count-up": {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%)" },
         },
-        countUp: {
-          'from': { opacity: '0', transform: 'translateY(10px)' },
-          'to': { opacity: '1', transform: 'translateY(0)' },
+        progressBar: {
+          "0%": { width: "0%" },
+          "100%": { width: "100%" },
         },
+
+        // Interactive animations
         pulseRing: {
-          '0%': { transform: 'scale(0.8)', opacity: '0.8' },
-          '80%, 100%': { transform: 'scale(1.5)', opacity: '0' },
+          "0%": { transform: "scale(0.33)" },
+          "40%, 50%": { opacity: "1" },
+          "100%": { opacity: "0", transform: "scale(1.33)" },
         },
         rotate: {
-          '0%': { transform: 'rotate(0deg)' },
-          '100%': { transform: 'rotate(360deg)' },
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        countUp: {
+          "0%": { transform: "translateY(100%)" },
+          "100%": { transform: "translateY(0%)" },
         },
         scaleIn: {
-          'from': { transform: 'scale(0.95)', opacity: '0' },
-          'to': { transform: 'scale(1)', opacity: '1' },
+          "0%": { transform: "scale(0.9)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "1" },
         },
-        slideIn: {
-          'from': { transform: 'translateX(-20px)', opacity: '0' },
-          'to': { transform: 'translateX(0)', opacity: '1' },
+        bounce: {
+          "0%, 20%, 53%, 80%, 100%": { transform: "translate3d(0,0,0)" },
+          "40%, 43%": { transform: "translate3d(0,-8px,0)" },
+          "70%": { transform: "translate3d(0,-4px,0)" },
+          "90%": { transform: "translate3d(0,-1px,0)" },
         },
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
+        heartbeat: {
+          "0%": { transform: "scale(1)" },
+          "14%": { transform: "scale(1.1)" },
+          "28%": { transform: "scale(1)" },
+          "42%": { transform: "scale(1.1)" },
+          "70%": { transform: "scale(1)" },
         },
       },
       fontFamily: {

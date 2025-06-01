@@ -1,102 +1,61 @@
+import * as React from "react"
 
-import React from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 
-interface CardProps {
-  title?: string;
-  icon?: React.ReactNode;
-  children: React.ReactNode;
-  className?: string;
+interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   glassmorphism?: boolean;
-  glowColor?: "blue" | "purple" | "green" | "amber" | "none";
-  hoverEffect?: boolean;
-  variant?: "default" | "elevated" | "bordered";
+  glowColor?: "blue" | "green" | "purple" | "amber" | "red";
+  intensity?: "low" | "medium" | "high";
 }
 
-export const Card: React.FC<CardProps> = ({
-  title,
-  icon,
-  children,
-  className = "",
-  glassmorphism = false,
-  glowColor = "blue",
-  hoverEffect = false,
-  variant = "default"
-}) => {
-  const getGlowStyles = () => {
-    const baseClasses = "absolute opacity-30 blur-3xl rounded-full transition-opacity duration-500";
-    const positionClasses = {
-      topLeft: "-top-24 -left-24 w-96 h-96",
-      bottomRight: "-bottom-24 -right-24 w-96 h-96"
-    };
-    
-    const colorClasses = {
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, glassmorphism = false, glowColor = "blue", intensity = "medium", ...props }, ref) => {
+    const glassStyles = glassmorphism ? {
       blue: {
-        topLeft: "bg-blue-500/20 animate-pulse",
-        bottomRight: "bg-indigo-500/20 animate-pulse delay-1000"
-      },
-      purple: {
-        topLeft: "bg-purple-500/20 animate-pulse",
-        bottomRight: "bg-fuchsia-500/20 animate-pulse delay-1000"
+        low: "bg-gradient-to-br from-blue-900/10 via-gray-900/20 to-black/30 backdrop-blur-sm border-blue-500/20 hover:border-blue-400/30",
+        medium: "bg-gradient-to-br from-blue-900/20 via-gray-900/30 to-black/40 backdrop-blur-md border-blue-500/30 hover:border-blue-400/40",
+        high: "bg-gradient-to-br from-blue-900/30 via-gray-900/40 to-black/50 backdrop-blur-lg border-blue-500/40 hover:border-blue-400/50"
       },
       green: {
-        topLeft: "bg-green-500/20 animate-pulse",
-        bottomRight: "bg-emerald-500/20 animate-pulse delay-1000"
+        low: "bg-gradient-to-br from-green-900/10 via-gray-900/20 to-black/30 backdrop-blur-sm border-green-500/20 hover:border-green-400/30",
+        medium: "bg-gradient-to-br from-green-900/20 via-gray-900/30 to-black/40 backdrop-blur-md border-green-500/30 hover:border-green-400/40",
+        high: "bg-gradient-to-br from-green-900/30 via-gray-900/40 to-black/50 backdrop-blur-lg border-green-500/40 hover:border-green-400/50"
+      },
+      purple: {
+        low: "bg-gradient-to-br from-purple-900/10 via-gray-900/20 to-black/30 backdrop-blur-sm border-purple-500/20 hover:border-purple-400/30",
+        medium: "bg-gradient-to-br from-purple-900/20 via-gray-900/30 to-black/40 backdrop-blur-md border-purple-500/30 hover:border-purple-400/40",
+        high: "bg-gradient-to-br from-purple-900/30 via-gray-900/40 to-black/50 backdrop-blur-lg border-purple-500/40 hover:border-purple-400/50"
       },
       amber: {
-        topLeft: "bg-amber-500/20 animate-pulse",
-        bottomRight: "bg-orange-500/20 animate-pulse delay-1000"
+        low: "bg-gradient-to-br from-amber-900/10 via-gray-900/20 to-black/30 backdrop-blur-sm border-amber-500/20 hover:border-amber-400/30",
+        medium: "bg-gradient-to-br from-amber-900/20 via-gray-900/30 to-black/40 backdrop-blur-md border-amber-500/30 hover:border-amber-400/40",
+        high: "bg-gradient-to-br from-amber-900/30 via-gray-900/40 to-black/50 backdrop-blur-lg border-amber-500/40 hover:border-amber-400/50"
       },
-      none: {
-        topLeft: "hidden",
-        bottomRight: "hidden"
+      red: {
+        low: "bg-gradient-to-br from-red-900/10 via-gray-900/20 to-black/30 backdrop-blur-sm border-red-500/20 hover:border-red-400/30",
+        medium: "bg-gradient-to-br from-red-900/20 via-gray-900/30 to-black/40 backdrop-blur-md border-red-500/30 hover:border-red-400/40",
+        high: "bg-gradient-to-br from-red-900/30 via-gray-900/40 to-black/50 backdrop-blur-lg border-red-500/40 hover:border-red-400/50"
       }
-    };
-    
-    return {
-      topLeft: `${baseClasses} ${positionClasses.topLeft} ${colorClasses[glowColor].topLeft}`,
-      bottomRight: `${baseClasses} ${positionClasses.bottomRight} ${colorClasses[glowColor].bottomRight}`
-    };
-  };
+    } : {};
 
-  const variantClasses = {
-    default: "bg-[#121214] border-[#222224]",
-    elevated: "bg-[#121214] border-[#222224] shadow-lg shadow-black/20",
-    bordered: "bg-[#121214]/80 border-[#333336] backdrop-blur-sm"
-  };
+    const glassClass = glassmorphism ? glassStyles[glowColor]?.[intensity] || glassStyles.blue.medium : "";
 
-  const glowStyles = getGlowStyles();
-
-  return (
-    <div className={cn(
-      "rounded-lg border text-card-foreground transition-all duration-300",
-      glassmorphism && "relative overflow-hidden backdrop-blur-xl bg-background/95 border-white/10",
-      hoverEffect && "hover:translate-y-[-2px] hover:shadow-xl hover:shadow-black/20",
-      variantClasses[variant],
-      className
-    )}>
-      {glassmorphism && (
-        <>
-          <div className={glowStyles.topLeft}></div>
-          <div className={glowStyles.bottomRight}></div>
-        </>
-      )}
-      
-      <div className="relative z-10">
-        {title && (
-          <div className="flex items-center justify-between p-4 border-b border-[#222224]">
-            <h3 className="font-semibold tracking-tight text-lg">{title}</h3>
-            {icon && (
-              <div className="transition-transform duration-300 group-hover:scale-110">
-                {icon}
-              </div>
-            )}
-          </div>
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "rounded-lg shadow-sm transition-all duration-300 ease-out",
+          glassmorphism 
+            ? cn("relative overflow-hidden", glassClass, "hover:shadow-lg hover:scale-[1.01]")
+            : "border bg-card text-card-foreground",
+          className
         )}
-        <div className={title ? 'p-4' : 'p-0'}>
-          {children}
-        </div>
-      </div>
-    </div>
-  );
-};
+        {...props}
+      />
+    );
+  }
+)
+
+Card.displayName = "Card"
+
+export { Card }
