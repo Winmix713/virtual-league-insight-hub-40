@@ -1,5 +1,5 @@
 import React from "react";
-import { Calendar, Clock, MapPin, Trophy, Filter, Search, Plus, ChevronRight } from "lucide-react";
+import { Calendar, Clock, MapPin, Trophy, Filter, Search, Plus, ChevronRight, CalendarClock, AlertTriangle, Users } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -169,9 +169,31 @@ const Matches = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex justify-between items-center p-3 bg-[#1e1e20]/50 rounded-lg">
               <div className="flex items-center gap-3">
-                <span className="font-medium">Arsenal</span>
+                <div className="flex items-center gap-2">
+                  <img 
+                    src={getTeamLogoUrl("Arsenal")} 
+                    alt="Arsenal"
+                    className="w-5 h-5 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                  <span className="font-medium">Arsenal</span>
+                </div>
                 <span className="text-2xl font-bold">0 - 0</span>
-                <span className="font-medium">Manchester City</span>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">Manchester City</span>
+                  <img 
+                    src={getTeamLogoUrl("Manchester City")} 
+                    alt="Manchester City"
+                    className="w-5 h-5 object-contain"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                    }}
+                  />
+                </div>
               </div>
               <div className="text-sm text-red-400">67' LIVE</div>
             </div>
@@ -213,9 +235,35 @@ const Matches = () => {
                   </span>
                 </div>
 
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <img 
+                      src={getTeamLogoUrl(match.team1)} 
+                      alt={match.team1}
+                      className="w-6 h-6 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                    <span className="text-sm font-medium">{match.team1}</span>
+                  </div>
+                  <span className="text-2xl font-bold mx-4">{match.score}</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">{match.team2}</span>
+                    <img 
+                      src={getTeamLogoUrl(match.team2)} 
+                      alt={match.team2}
+                      className="w-6 h-6 object-contain"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
+                  </div>
+                </div>
                 <div className="text-center">
-                  <span className="text-4xl font-bold">{match.score}</span>
-                  <p className="text-sm text-gray-400 mt-1">at {match.location}</p>
+                  <p className="text-sm text-gray-400">at {match.location}</p>
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-[#222224] flex justify-end">
