@@ -376,6 +376,34 @@ const Statistics = () => {
         </div>
       </Card>
       
+      {/* Player Performance Heatmap */}
+      <Card glassmorphism glowColor="blue" className="mt-6">
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <BarChart className="h-5 w-5 text-blue-500" />
+              <h2 className="text-xl font-semibold">Player Performance Heatmap</h2>
+            </div>
+            <div className="flex gap-2">
+              <select className="py-1 px-2 bg-[#1e1e20] border border-[#222224] rounded text-sm">
+                <option>Goals</option>
+                <option>Assists</option>
+                <option>Rating</option>
+              </select>
+              <Button variant="outline" size="sm">Export</Button>
+            </div>
+          </div>
+          
+          <div className="h-64 bg-[#1e1e20]/50 rounded-lg border border-[#222224] flex items-center justify-center">
+            <div className="text-center">
+              <BarChart className="h-12 w-12 text-gray-500 mx-auto mb-2" />
+              <p className="text-gray-400">Interactive heatmap will be displayed here</p>
+              <p className="text-xs text-gray-500">Showing player performance across different metrics</p>
+            </div>
+          </div>
+        </div>
+      </Card>
+
       {/* Statistics Summary */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
         <Card glassmorphism glowColor="purple">

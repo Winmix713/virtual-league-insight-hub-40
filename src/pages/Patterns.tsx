@@ -249,6 +249,62 @@ const Patterns = () => {
         </div>
       </Card>
       
+      {/* AI Pattern Detection */}
+      <Card glassmorphism glowColor="green" className="mt-6">
+        <div className="p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <TrendingUp className="h-5 w-5 text-green-500" />
+            <h2 className="text-xl font-semibold">AI Pattern Detection</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border border-[#222224] rounded-lg p-4">
+              <h3 className="font-medium mb-4">Recently Discovered Patterns</h3>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-2 bg-[#1e1e20]/50 rounded">
+                  <div>
+                    <div className="text-sm font-medium">Corner Kick Success</div>
+                    <div className="text-xs text-gray-400">85% higher success rate in final 15min</div>
+                  </div>
+                  <span className="text-xs bg-green-900/30 text-green-500 px-2 py-0.5 rounded">New</span>
+                </div>
+                <div className="flex items-center justify-between p-2 bg-[#1e1e20]/50 rounded">
+                  <div>
+                    <div className="text-sm font-medium">Home Advantage</div>
+                    <div className="text-xs text-gray-400">72% win rate at home stadiums</div>
+                  </div>
+                  <span className="text-xs bg-blue-900/30 text-blue-500 px-2 py-0.5 rounded">Verified</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="border border-[#222224] rounded-lg p-4">
+              <h3 className="font-medium mb-4">Pattern Confidence</h3>
+              <div className="space-y-3">
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm">High Press Counter</span>
+                    <span className="text-sm">94%</span>
+                  </div>
+                  <div className="w-full h-2 bg-[#222224] rounded-full">
+                    <div className="h-2 bg-green-500 rounded-full" style={{ width: "94%" }}></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm">Wing Overload</span>
+                    <span className="text-sm">87%</span>
+                  </div>
+                  <div className="w-full h-2 bg-[#222224] rounded-full">
+                    <div className="h-2 bg-blue-500 rounded-full" style={{ width: "87%" }}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
       {/* Pattern Analysis */}
       <Card glassmorphism glowColor="purple" className="mt-6">
         <div className="p-6">

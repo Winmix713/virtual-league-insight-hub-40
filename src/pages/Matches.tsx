@@ -159,6 +159,26 @@ const Matches = () => {
         />
       </div>
 
+      {/* Live Matches Ticker */}
+      <Card className="mt-6 bg-gradient-to-r from-red-900/20 to-red-800/20 border-red-700/30">
+        <div className="p-4">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+            <h3 className="font-semibold text-red-400">LIVE MATCHES</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex justify-between items-center p-3 bg-[#1e1e20]/50 rounded-lg">
+              <div className="flex items-center gap-3">
+                <span className="font-medium">Arsenal</span>
+                <span className="text-2xl font-bold">0 - 0</span>
+                <span className="font-medium">Manchester City</span>
+              </div>
+              <div className="text-sm text-red-400">67' LIVE</div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
       {/* Match Schedule */}
       <Card glassmorphism glowColor="blue" className="mt-6">
         <div className="p-6">

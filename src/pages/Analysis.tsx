@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BarChart2, TrendingUp, BarChart, Download, ChevronRight, ArrowUpRight } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
@@ -96,7 +95,7 @@ const Analysis = () => {
                 Export
               </Button>
             </div>
-            
+
             <div className="h-80 w-full flex">
               {/* Simulated chart for teams performance */}
               <div className="w-full h-full flex flex-col justify-end">
@@ -117,7 +116,7 @@ const Analysis = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 <div className="flex justify-between items-center border-t border-[#222224] pt-4">
                   <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
@@ -141,7 +140,7 @@ const Analysis = () => {
             </div>
           </div>
         </Card>
-        
+
         <Card glassmorphism glowColor="purple">
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
@@ -153,7 +152,7 @@ const Analysis = () => {
                 Export
               </Button>
             </div>
-            
+
             <div className="h-80 w-full flex">
               {/* Simulated line chart for prediction trends */}
               <div className="w-full h-full flex flex-col justify-end">
@@ -164,7 +163,7 @@ const Analysis = () => {
                     <line x1="0" y1="25" x2="100" y2="25" stroke="#222224" strokeWidth="0.5" />
                     <line x1="0" y1="50" x2="100" y2="50" stroke="#222224" strokeWidth="0.5" />
                     <line x1="0" y1="75" x2="100" y2="75" stroke="#222224" strokeWidth="0.5" />
-                    
+
                     {/* Accuracy Line */}
                     <path 
                       d="M0,65 L20,55 L40,60 L60,45 L80,30 L100,25" 
@@ -172,14 +171,14 @@ const Analysis = () => {
                       stroke="#3b82f6" 
                       strokeWidth="2"
                     />
-                    
+
                     {/* Area under the curve */}
                     <path 
                       d="M0,65 L20,55 L40,60 L60,45 L80,30 L100,25 L100,100 L0,100 Z" 
                       fill="url(#blueGradient)" 
                       opacity="0.2" 
                     />
-                    
+
                     {/* Prediction Line */}
                     <path 
                       d="M0,70 L20,65 L40,50 L60,40 L80,35 L100,30" 
@@ -187,14 +186,14 @@ const Analysis = () => {
                       stroke="#a855f7" 
                       strokeWidth="2"
                     />
-                    
+
                     {/* Area under the curve */}
                     <path 
                       d="M0,70 L20,65 L40,50 L60,40 L80,35 L100,30 L100,100 L0,100 Z" 
                       fill="url(#purpleGradient)" 
                       opacity="0.2" 
                     />
-                    
+
                     {/* Gradients */}
                     <defs>
                       <linearGradient id="blueGradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -207,7 +206,7 @@ const Analysis = () => {
                       </linearGradient>
                     </defs>
                   </svg>
-                  
+
                   {/* Y-axis labels */}
                   <div className="absolute top-0 left-0 h-full flex flex-col justify-between text-xs text-gray-400 pointer-events-none">
                     <span>100%</span>
@@ -216,7 +215,7 @@ const Analysis = () => {
                     <span>25%</span>
                     <span>0%</span>
                   </div>
-                  
+
                   {/* X-axis labels */}
                   <div className="absolute bottom-0 left-0 w-full flex justify-between text-xs text-gray-400 pointer-events-none">
                     <span>Jan</span>
@@ -226,7 +225,7 @@ const Analysis = () => {
                     <span>May</span>
                   </div>
                 </div>
-                
+
                 <div className="flex justify-between items-center border-t border-[#222224] pt-4 mt-8">
                   <div className="flex items-center gap-6">
                     <div className="flex items-center gap-2">
@@ -260,7 +259,7 @@ const Analysis = () => {
               Compare Teams
             </Button>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="border border-[#222224] rounded-lg p-4">
               <div className="flex justify-between items-center mb-4">
@@ -272,7 +271,7 @@ const Analysis = () => {
                 </div>
                 <Button variant="outline" size="sm">Change</Button>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between items-center mb-1">
@@ -283,7 +282,7 @@ const Analysis = () => {
                     <div className="h-full bg-green-500 rounded-full" style={{ width: "85%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Defense</span>
@@ -293,7 +292,7 @@ const Analysis = () => {
                     <div className="h-full bg-green-500 rounded-full" style={{ width: "78%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Possession</span>
@@ -303,7 +302,7 @@ const Analysis = () => {
                     <div className="h-full bg-green-500 rounded-full" style={{ width: "65%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Form</span>
@@ -315,7 +314,7 @@ const Analysis = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="border border-[#222224] rounded-lg p-4">
               <div className="flex justify-between items-center mb-4">
                 <div className="flex items-center gap-3">
@@ -326,7 +325,7 @@ const Analysis = () => {
                 </div>
                 <Button variant="outline" size="sm">Change</Button>
               </div>
-              
+
               <div className="space-y-4">
                 <div>
                   <div className="flex justify-between items-center mb-1">
@@ -337,7 +336,7 @@ const Analysis = () => {
                     <div className="h-full bg-blue-500 rounded-full" style={{ width: "82%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Defense</span>
@@ -347,7 +346,7 @@ const Analysis = () => {
                     <div className="h-full bg-blue-500 rounded-full" style={{ width: "80%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Possession</span>
@@ -357,7 +356,7 @@ const Analysis = () => {
                     <div className="h-full bg-blue-500 rounded-full" style={{ width: "70%" }}></div>
                   </div>
                 </div>
-                
+
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-gray-400">Form</span>
@@ -370,7 +369,7 @@ const Analysis = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-6 p-4 border border-[#222224] rounded-lg">
             <div className="flex justify-between items-center">
               <h3 className="font-medium">Head to Head</h3>
@@ -378,7 +377,7 @@ const Analysis = () => {
                 <span className="text-sm">Last 5 matches</span>
               </div>
             </div>
-            
+
             <div className="flex justify-center items-center gap-3 my-6">
               <div className="flex flex-col items-center">
                 <div className="h-12 w-12 rounded-full bg-[#1e1e20] flex items-center justify-center">
@@ -386,12 +385,12 @@ const Analysis = () => {
                 </div>
                 <span className="font-medium mt-2">3</span>
               </div>
-              
+
               <div className="flex flex-col items-center px-4">
                 <span className="text-sm text-gray-400">Draws</span>
                 <span className="font-medium mt-2">1</span>
               </div>
-              
+
               <div className="flex flex-col items-center">
                 <div className="h-12 w-12 rounded-full bg-[#1e1e20] flex items-center justify-center">
                   <span className="font-bold text-white">LI</span>
@@ -399,7 +398,7 @@ const Analysis = () => {
                 <span className="font-medium mt-2">1</span>
               </div>
             </div>
-            
+
             <div className="flex justify-center gap-1">
               <span className="w-8 h-6 flex items-center justify-center rounded bg-blue-700/30 text-blue-500 text-xs font-medium">MK</span>
               <span className="w-8 h-6 flex items-center justify-center rounded bg-gray-700/30 text-gray-500 text-xs font-medium">D</span>
@@ -408,6 +407,66 @@ const Analysis = () => {
               <span className="w-8 h-6 flex items-center justify-center rounded bg-blue-700/30 text-blue-500 text-xs font-medium">MK</span>
             </div>
           </div>
+
+          {/* AI Predictions Section */}
+          
+      <Card glassmorphism glowColor="amber" className="mt-6">
+        <div className="p-6">
+          <div className="flex items-center gap-3 mb-6">
+            <TrendingUp className="h-5 w-5 text-amber-500" />
+            <h2 className="text-xl font-semibold">AI-Powered Predictions</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="border border-[#222224] rounded-lg p-4">
+              <h3 className="font-medium mb-3">Next Match Predictions</h3>
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Manchester Kék vs Liverpool</span>
+                  <span className="text-xs bg-green-900/30 text-green-500 px-2 py-0.5 rounded">76% Win</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">London Ágyúk vs Chelsea</span>
+                  <span className="text-xs bg-amber-900/30 text-amber-500 px-2 py-0.5 rounded">65% Win</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-[#222224] rounded-lg p-4">
+              <h3 className="font-medium mb-3">Season Predictions</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-sm text-gray-400">Title Winner</span>
+                  <span className="text-sm font-medium">Manchester Kék</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm text-gray-400">Top Scorer</span>
+                  <span className="text-sm font-medium">M. Silva</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm text-gray-400">Relegation</span>
+                  <span className="text-sm font-medium">Brighton</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-[#222224] rounded-lg p-4">
+              <h3 className="font-medium mb-3">Model Accuracy</h3>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-amber-500">84.2%</div>
+                <div className="text-xs text-gray-400 mt-1">Overall Accuracy</div>
+                <div className="mt-3 text-xs">
+                  <div className="flex justify-between">
+                    <span className="text-gray-400">Last 10 predictions</span>
+                    <span className="text-green-500">8/10 correct</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Card>
+
           
           <div className="mt-6">
             <Button variant="glass" fullWidth={true} rightIcon={<ChevronRight size={16} />}>

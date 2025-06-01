@@ -195,21 +195,55 @@ const Teams = () => {
             </Button>
           </div>
 
-          {/* Search and Filter */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
-            <div className="relative flex-1">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <Search className="w-4 h-4 text-gray-500" />
+          {/* Enhanced Search and Filter */}
+          <div className="flex flex-col gap-4 mb-6">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="relative flex-1">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <Search className="w-4 h-4 text-gray-500" />
+                </div>
+                <input
+                  type="search"
+                  className="w-full py-2 pl-10 pr-4 text-sm bg-[#1e1e20]/50 border border-[#222224] rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  placeholder="Search teams, players, or stats..."
+                />
               </div>
-              <input
-                type="search"
-                className="w-full py-2 pl-10 pr-4 text-sm bg-[#1e1e20]/50 border border-[#222224] rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                placeholder="Search teams..."
-              />
+              <div className="flex gap-2">
+                <select className="py-2 px-3 bg-[#1e1e20] border border-[#222224] rounded-md text-white text-sm">
+                  <option>All Divisions</option>
+                  <option>Premier</option>
+                  <option>Championship</option>
+                </select>
+                <select className="py-2 px-3 bg-[#1e1e20] border border-[#222224] rounded-md text-white text-sm">
+                  <option>Sort by Points</option>
+                  <option>Sort by Goals</option>
+                  <option>Sort by Form</option>
+                </select>
+                <Button variant="outline" leftIcon={<Filter size={16} />} size="default">
+                  Advanced Filter
+                </Button>
+              </div>
             </div>
-            <Button variant="outline" leftIcon={<Filter size={16} />} size="default">
-              Filter Teams
-            </Button>
+            
+            {/* Quick Stats Overview */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-[#1e1e20]/30 rounded-lg border border-[#222224]">
+              <div className="text-center">
+                <div className="text-lg font-semibold text-blue-500">16</div>
+                <div className="text-xs text-gray-400">Total Teams</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-semibold text-green-500">100%</div>
+                <div className="text-xs text-gray-400">Active</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-semibold text-purple-500">2.6</div>
+                <div className="text-xs text-gray-400">Avg Goals</div>
+              </div>
+              <div className="text-center">
+                <div className="text-lg font-semibold text-amber-500">44</div>
+                <div className="text-xs text-gray-400">Highest Points</div>
+              </div>
+            </div>
           </div>
 
           {/* Team Cards Grid - New Design */}

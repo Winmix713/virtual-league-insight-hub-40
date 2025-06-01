@@ -197,7 +197,7 @@ const Index: React.FC = () => {
               </div>
             </Card>
 
-            {/* Statistics Grid */}
+            {/* Statistics Grid - Enhanced with interactive widgets */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
               <StatCard
                 title="Total Teams"
@@ -205,6 +205,8 @@ const Index: React.FC = () => {
                 icon={<Users size={24} />}
                 color="blue"
                 change={statsData.teams.change}
+                trend={[20, 25, 30, 28, 32, 35]}
+                interactive={true}
               />
 
               <StatCard
@@ -213,6 +215,8 @@ const Index: React.FC = () => {
                 icon={<Calendar size={24} />}
                 color="green"
                 change={statsData.matches.change}
+                trend={[15, 18, 22, 19, 25, 28]}
+                interactive={true}
               />
 
               <StatCard
@@ -221,6 +225,8 @@ const Index: React.FC = () => {
                 icon={<BarChart size={24} />}
                 color="purple"
                 change={statsData.accuracy.change}
+                trend={[65, 68, 70, 72, 74, 76]}
+                interactive={true}
               />
 
               <StatCard
@@ -233,8 +239,29 @@ const Index: React.FC = () => {
                   isPositive: true,
                   text: statsData.leagues.info
                 } : undefined}
+                interactive={true}
               />
             </div>
+
+            {/* Quick Actions Bar */}
+            <Card glassmorphism glowColor="purple" className="mt-6">
+              <div className="p-4">
+                <div className="flex flex-wrap gap-3 justify-center">
+                  <Button variant="glass" size="sm" leftIcon={<Calendar size={16} />}>
+                    Create Match
+                  </Button>
+                  <Button variant="glass" size="sm" leftIcon={<Users size={16} />}>
+                    Add Team
+                  </Button>
+                  <Button variant="glass" size="sm" leftIcon={<BarChart size={16} />}>
+                    View Analytics
+                  </Button>
+                  <Button variant="glass" size="sm" leftIcon={<Trophy size={16} />}>
+                    League Settings
+                  </Button>
+                </div>
+              </div>
+            </Card>
 
             {/* Main Content Grid */}
             <div className="w-full grid gap-6 grid-cols-1 lg:grid-cols-12">
