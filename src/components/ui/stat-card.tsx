@@ -1,7 +1,4 @@
-The code is modified to enhance the StatCard component with interactive features, animations, and skeleton loading.
-```
 
-```replit_final_file
 import React, { useState } from "react";
 import { Card } from "./card";
 import { cn } from "@/lib/utils";
