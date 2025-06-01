@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Eye, Users, Trophy, Target, TrendingUp, Star, MoreHorizontal } from "lucide-react";
 import { motion } from "framer-motion";
+import { getTeamLogoUrl } from "@/data/teams";
 
 interface TeamStats {
   wins: number;
@@ -119,9 +120,23 @@ export function TeamCard({
             <div className="flex items-center gap-3">
               <motion.div
                 whileHover={{ rotate: 5, scale: 1.1 }}
-                className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center border border-white/20 backdrop-blur-sm"
+                className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-500/30 to-purple-500/30 flex items-center justify-center border border-white/20 backdrop-blur-sm overflow-hidden"
               >
-                <span className="font-bold text-lg text-white">{logo}</span>
+                {getTeamLogoUrl(name) ? (
+                  <img 
+                    src={getTeamLogoUrl(name)} 
+                    alt={`${name} logo`}
+                    className="w-10 h-10 object-contain"
+                    onError={(e) => {
+                      // Fallback to text if image fails to load
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.innerHTML = `<span class="font-bold text-lg text-white">${logo}</span>`;
+                    }}
+                  />
+                ) : (
+                  <span className="font-bold text-lg text-white">{logo}</span>
+                )}
               </motion.div>
               <div>
                 <h3 className="font-semibold text-white group-hover:text-blue-400 transition-colors">

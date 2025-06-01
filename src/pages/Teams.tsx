@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { StatCard } from "@/components/ui/stat-card";
 import { TeamCard } from "@/components/team/TeamCard";
 import { cn } from "@/lib/utils";
+import { TEAMS } from "@/data/teams";
 
 interface TeamData {
   id: number;
@@ -25,7 +26,7 @@ interface TeamData {
 }
 
 const Teams = () => {
-  // Sample team data
+  // Sample team data using real teams
   const teams: TeamData[] = [
     {
       id: 1,
@@ -116,6 +117,36 @@ const Teams = () => {
       division: "Premier",
       form: ["L", "W", "W", "D", "W"],
       position: 5
+    },
+    {
+      id: 7,
+      name: "Newcastle",
+      logo: "NU",
+      wins: 8,
+      draws: 7,
+      losses: 5,
+      points: 31,
+      goalsFor: 28,
+      goalsAgainst: 25,
+      players: 26,
+      division: "Premier",
+      form: ["W", "D", "L", "W", "D"],
+      position: 7
+    },
+    {
+      id: 8,
+      name: "Tottenham",
+      logo: "TO",
+      wins: 9,
+      draws: 4,
+      losses: 7,
+      points: 31,
+      goalsFor: 33,
+      goalsAgainst: 30,
+      players: 25,
+      division: "Premier",
+      form: ["L", "W", "W", "L", "D"],
+      position: 8
     }
   ];
 

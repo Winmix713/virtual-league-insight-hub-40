@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BarChart, Download, TrendingUp, ChevronRight, Table } from "lucide-react";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
@@ -33,7 +32,7 @@ interface PlayerStatsData {
 
 const Statistics = () => {
   // Sample league table data
-  const leagueTable: TeamStatsData[] = [
+  const teamStats: TeamStatsData[] = [
     {
       position: 1,
       name: "Manchester Kék",
@@ -98,6 +97,45 @@ const Statistics = () => {
       goalDiff: 5,
       points: 34,
       form: ["L", "W", "W", "D", "W"]
+    },
+    {
+      position: 6,
+      name: "Aston Oroszlán",
+      played: 20,
+      won: 9,
+      drawn: 6,
+      lost: 5,
+      goalsFor: 30,
+      goalsAgainst: 28,
+      goalDiff: 2,
+      points: 33,
+      form: ["D", "W", "L", "W", "D"]
+    },
+    {
+      position: 7,
+      name: "Newcastle",
+      played: 20,
+      won: 8,
+      drawn: 7,
+      lost: 5,
+      goalsFor: 28,
+      goalsAgainst: 25,
+      goalDiff: 3,
+      points: 31,
+      form: ["W", "D", "L", "W", "D"]
+    },
+    {
+      position: 8,
+      name: "Tottenham",
+      played: 20,
+      won: 9,
+      drawn: 4,
+      lost: 7,
+      goalsFor: 33,
+      goalsAgainst: 30,
+      goalDiff: 3,
+      points: 31,
+      form: ["L", "W", "W", "L", "D"]
     }
   ];
 
@@ -229,7 +267,7 @@ const Statistics = () => {
               Export
             </Button>
           </div>
-          
+
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#222224] scrollbar-track-transparent -mx-6">
             <div className="inline-block min-w-full align-middle px-6">
               <table className="min-w-full divide-y divide-[#222224]">
@@ -249,7 +287,7 @@ const Statistics = () => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#222224]">
-                  {leagueTable.map((team) => (
+                  {teamStats.map((team) => (
                     <tr key={team.position} className="hover:bg-white/5 transition-colors">
                       <td className="py-4">
                         <span className={cn(
@@ -306,7 +344,7 @@ const Statistics = () => {
           </div>
         </div>
       </Card>
-      
+
       {/* Top Scorers */}
       <Card glassmorphism glowColor="green" className="mt-6">
         <div className="p-6">
@@ -319,7 +357,7 @@ const Statistics = () => {
               Export
             </Button>
           </div>
-          
+
           <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-[#222224] scrollbar-track-transparent -mx-6">
             <div className="inline-block min-w-full align-middle px-6">
               <table className="min-w-full divide-y divide-[#222224]">
@@ -375,7 +413,7 @@ const Statistics = () => {
           </div>
         </div>
       </Card>
-      
+
       {/* Player Performance Heatmap */}
       <Card glassmorphism glowColor="blue" className="mt-6">
         <div className="p-6">
@@ -393,7 +431,7 @@ const Statistics = () => {
               <Button variant="outline" size="sm">Export</Button>
             </div>
           </div>
-          
+
           <div className="h-64 bg-[#1e1e20]/50 rounded-lg border border-[#222224] flex items-center justify-center">
             <div className="text-center">
               <BarChart className="h-12 w-12 text-gray-500 mx-auto mb-2" />
@@ -414,7 +452,7 @@ const Statistics = () => {
                 <h2 className="text-xl font-semibold">Goals Distribution</h2>
               </div>
             </div>
-            
+
             <div className="h-64 w-full">
               {/* Simple bar chart for goals distribution */}
               <div className="h-full w-full flex items-end justify-around">
@@ -440,13 +478,13 @@ const Statistics = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-4 text-sm text-center text-gray-400">
               Total Goals: {statsData.goals}
             </div>
           </div>
         </Card>
-        
+
         <Card glassmorphism glowColor="amber">
           <div className="p-6">
             <div className="flex items-center justify-between mb-6">
@@ -455,7 +493,7 @@ const Statistics = () => {
                 <h2 className="text-xl font-semibold">Goals Timeline</h2>
               </div>
             </div>
-            
+
             <div className="h-64 w-full">
               {/* Simple line chart for goals timeline */}
               <div className="h-full w-full flex items-end space-x-2">
@@ -471,7 +509,7 @@ const Statistics = () => {
                 ))}
               </div>
             </div>
-            
+
             <div className="mt-4 text-sm text-center text-gray-400">
               Most Goals: 76-90 minutes
             </div>
