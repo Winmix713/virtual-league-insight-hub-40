@@ -5,15 +5,10 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  root: "client",
   server: {
     host: "0.0.0.0",
     port: 5000,
     open: true,
-    allowedHosts: [
-      "e86dd3f0-39ef-4aac-8dbf-9b3fcdadb6c8-00-2yw436p8houb4.kirk.replit.dev",
-      // Add other hosts as needed
-    ],
   },
   plugins: [
     react(),
@@ -21,12 +16,11 @@ export default defineConfig(({ mode }) => ({
   ].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "client/src"),
-      "@shared": path.resolve(__dirname, "shared"),
+      "@": path.resolve(__dirname, "./src"),
     },
   },
   build: {
-    outDir: "../dist",
+    outDir: "dist",
     sourcemap: mode === "development",
   },
 }));
